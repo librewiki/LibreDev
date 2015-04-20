@@ -1,0 +1,8 @@
+{
+    "@metadata": {
+        "authors": [
+            "Jon Robson"
+        ]
+    },
+    "mantle-desc": "Wraps core with some additional libraries and functionality"
+}

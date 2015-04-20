@@ -1,0 +1,378 @@
+body {
+	background-color: #eee;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "Meiryo UI", "Apple SD 산돌고딕 Neo", "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", "나눔고딕", "NanumGothic", sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+}
+
+div#body_wrap {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0;
+}
+div#mw-navigation {
+	display: none;
+}
+
+.noprint {
+	display: none;
+}
+
+.row {
+	margin: 0;
+}
+
+.col-xs-9 {
+	padding: 0;
+	position: relative;
+}
+
+.col-xs-3 {
+	padding: 0;
+	position: relative;
+}
+
+.nav>li>a {
+    padding: 10px 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.top_navi {
+	z-index: 9999;
+}
+
+.navbar {
+    margin: 0 auto;
+    height: 50px;
+	max-width: 1200px;
+}
+
+.navbar-iWiki {
+    margin: 0 auto;
+    box-shadow: 0 0 10px rgba(0,0,0,.3);
+    background-color: white;
+	width: 100%;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.7em;
+    text-shadow: 0.05em 0.05em 0.18em #bbb;
+    color: #333;
+}
+
+.navbar-form {
+    padding: 0;
+}
+
+.navbar-small-form {
+    display: none;
+}
+
+.navbar-personal {
+    position: absolute;
+    right: 0;
+    background-color: white;
+    margin-top: 2px;
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+
+.navbar-personalbar{
+    width: 210px;
+    margin: 0;
+}
+
+.loginbtn {
+    margin-top: 8px;
+    margin-left: 15px;
+    margin-right: 0;
+}
+
+.main_content {
+	margin-top: 60px;
+}
+
+.right_col {
+	position: fixed;
+}
+
+.right_search {
+	width: 230px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+#toc {
+	display: none;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding-left: 10px;
+}
+
+#toc>ul>li {
+	margin-bottom: 5px;
+}
+
+#toc>ul>li>ul>li {
+	margin-bottom: 5px;
+}
+
+#right_toc {
+	margin-left: 10px;
+	width: 250px;
+	height: expression( this.scrollHeight > 99 ? "300px" : "auto" );
+    max-height: 300px;
+    overflow-y: auto;
+	overflow-x: hidden;
+	margin-bottom: 10px;
+}
+
+#right_toc #toc {
+	display: table;
+	width: 230px;
+	max-width: 230px;
+}
+
+#toc ul ul, .toc ul ul {
+	margin-left: 10px;
+}
+
+#toctitle {
+	display: none;
+}
+
+#recent-list-div {
+	max-width: 230px;
+	margin-left: 10px;
+}
+
+#recent-list {
+	width: 230px;
+	border: 1px solid #ccc;
+	background-color: #f9f9f9;
+	border-radius: 5px;
+	padding: 10px;
+	margin:0px;
+	list-style:none;
+	font-size:95%;
+}
+#recent-list .new {
+	color:#ba0000;
+}
+
+div#content {
+	border: none;
+	border-right: 1px solid #ccc;
+	background-color: white;
+	box-shadow: 0 0 10px rgba(0,0,0,.3);
+}
+
+#firstHeading {
+    margin: 0;
+    text-shadow: #aaa 1px 1px 1px;
+    font-size: 2.0em;
+    font-weight: bold;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 5px;
+	padding-top: 6px;
+}
+
+.top_menu {
+    height: 20px;
+    position: absolute;
+    right: 15px;
+    top: 6px;
+}
+
+.top_menu>ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.top_menu>ul>li {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+.top_menu>ul>li>a {
+    font-size: 12px;
+}
+
+#toctitle {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 3px;
+    margin-bottom: 3px;
+}
+
+#toctitle>h2 {
+    font-size: 1.6em;
+}
+
+#mw-content-text>h2 {
+    font-size: 1.6em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+#mw-content-text>h3 {
+    font-size: 1.4em;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+#mw-content-text {
+    padding-left: 10px;
+}
+
+#mw-content-text>ul {
+    list-style-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAYElEQVQIW2OcN2/e/wsXLjCAACsrK4O2tjZDUlISI4jPmJeX9x8sAwUgBcXFxQxSUlKM+CWBqv7//v0bbiyIAdcJsvPq1atwY0F2enh4QIwFiT579gzFXpAYXBLZQchsANVcIQjW8cb3AAAAAElFTkSuQmCC");
+    padding-left: 5px;
+}
+
+.mw-content-ltr .mw-editsection, .mw-content-rtl .mw-content-ltr .mw-editsection {
+    margin-left:8px;
+}
+
+@media (max-width: 768px) {
+	.col-xs-3 {
+		display: none;
+	}
+	
+	.col-xs-9 {
+		width: 100%;
+	}
+
+	#toc {
+		display: table;
+	}
+
+    .navbar-iWiki {
+        width:auto;
+        max-width: 1000px;
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(0,0,0,.3);
+        background-color: white;
+    }
+    div#globalWrapper {
+        padding-top: 60px;
+    }
+
+    .navbar {
+        top: 0;
+    }
+    .navbar-iWiki {
+        width:auto;
+        max-width: 1000px;
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+    }
+
+    .navbar-toggle {
+        float: left;
+        color: #333;
+        font-size: 25px;
+        margin: 0;
+        margin-left: 5px;
+        height: 25px;
+        top: 2px;
+        z-index: 2;
+    }
+
+    .navbar-toogle-right {
+        float: right;
+    }
+
+    .navbar-brand {
+        display: none;
+    }
+
+    .navbar-search {
+        display: none;
+    }
+
+    .navbar-form {
+        display: none;
+    }
+
+    .navbar-small-form {
+        display: block;
+        position: absolute;
+        left: 15px;
+        padding-left: 54px;
+        padding-right: 48px;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .navbar-personal {
+        margin-top: 26px;
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+    }
+
+    .loginbtn {
+        display: none;
+    }
+
+    div#navbar {
+        margin-top: 26px;
+        background-color: white;
+        position: absolute;
+        width: 210px;
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+    }
+
+	div#content {
+        box-shadow: 0 0 5px rgba(0,0,0,.2);
+        padding: 10px;
+    }
+
+}
+
+@media screen and (max-width: 480px) {
+        .navbar-iWiki {
+        width:auto;
+        max-width: 1000px;
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(0,0,0,.3);
+        background-color: white;
+    }
+}
+@media (min-width: 768px) and (max-width: 992px) {
+
+    .navbar-iWiki {
+        width:auto;
+        max-width: 1000px;
+        margin: 0 auto;
+        box-shadow: 0 0 10px rgba(0,0,0,.3);
+        background-color: white;
+    }
+    .navbar-search {
+                display: none;
+        }
+
+        .navbar-form {
+                display: none;
+        }
+}
+
+a:visited.btn {
+    color: white;
+}
+
+a:visited.navbar-brand {
+    color: #333;
+}
+
+a:visited {
+    color: #337ab7;
+}
+
+del {
+	color: #999;
+}
+
+s {
+	color: #999;
+}
