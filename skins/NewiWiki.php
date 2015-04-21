@@ -240,9 +240,16 @@ class NewiwikiTemplate extends BaseTemplate {
             <li><?php echo Linker::linkKnown( $title, '<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> 새문단', null, array( 'action' => 'edit', 'section' => 'new' ) ); ?></li>
             <li><?php echo Linker::linkKnown( $title, '<span class="glyphicon glyphicon-time" aria-hidden="true"></span> 기록', null, array( 'action' => 'history' ) ); ?></li>
             <?php
-            if ( $companionTitle ) { ?>
-                <li><?php echo Linker::linkKnown( $companionTitle, '<span class="glyphicon glyphicon-fire" aria-hidden="true"></span> 토론', null ); ?></li>
-            <?php
+            if ( $companionTitle ) { 
+				if ($title->getNamespace() == NS_TALK) {
+					?>
+					<li><?php echo Linker::linkKnown( $companionTitle, '<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span> 본문' ); ?></li>
+					<?php
+				} else {
+				?>
+	                <li><?php echo Linker::linkKnown( $companionTitle, '<span class="glyphicon glyphicon-fire" aria-hidden="true"></span> 토론', null ); ?></li>
+    		        <?php
+				}
             } ?>
             <?php
             $mode = $this->getSkin()->getUser()->isWatched( $this->getSkin()->getRelevantTitle() ) ? 'unwatch' : 'watch';
