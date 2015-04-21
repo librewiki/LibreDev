@@ -64,6 +64,8 @@ class SkinNewiwiki extends SkinTemplate {
 		$out->addScriptFile( '../newiwiki/bootstrap/js/bootstrap.min.js' );
 		$out->addScriptFile( '../newiwiki/scroll.js?700' );
 		$out->addScriptFile( '../newiwiki/tocmove.js?700' );
+		$out->addScriptFile( '../newiwiki/alertmsg.js?700' );
+		$out->addScriptFile( '../newiwiki/jquery.cookie.js?700' );
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 		$out->addModules( array( 'skins.newiwiki.js', 'skins.newiwiki.collapsibleNav' ) );
 	}
@@ -205,7 +207,7 @@ class NewiwikiTemplate extends BaseTemplate {
 	    	            <?php
     	    	        if ( $wgUser->isLoggedIn() ) {
                 	    ?>
-        	        	    <a class="btn btn-success loginbtn navbar-right" data-toggle="collapse" href="#personalbar" aria-expanded="false" aria-controls="personalbar">
+        	        	    <button type="button" class="btn btn-success loginbtn navbar-right" data-toggle="collapse" href="#personalbar" aria-expanded="false" aria-controls="personalbar">
 		                    <?=$wgUser->getName();?>
     		                </a>
 	    	            <?php
@@ -215,14 +217,9 @@ class NewiwikiTemplate extends BaseTemplate {
 		                ?>	
 		            </div>
     		        <div id="personalbar" class="navbar-personal collapse">
-        		        <ul class="nav nav-stacked navbar-personalbar">
-            		        <?php
-                		    $user_icon = '<span class="user-icon"><img src="https://secure.gravatar.com/avatar/'.md5(strtolower( $wgUser->getEmail())).'.jpg?s=20&r=g"/></span>';
-	                	    $name = strtolower( $wgUser->getName() );
-	                    	$user_nav = $this->get_array_links( $this->data['personal_urls'], $user_icon . $name, 'user' );
-		                    echo $user_nav;
-		                    ?>
-        	            </ul>
+						<ul class="nav nav-stacked navbar-personalbar">
+							<?php $this->renderNavigation( 'PERSONAL' ); ?>
+						</ul>
 	        	    </div>
 				</div>
 	        </div>
@@ -270,7 +267,10 @@ class NewiwikiTemplate extends BaseTemplate {
     </div>
 			<div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
 			<?php if ( $this->data['sitenotice'] ) { ?>
-			<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
+			<div id="alertmsg" class="alert alert-info siteNotice alert-dismissible" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<?php $this->html( 'sitenotice' ) ?>
+			</div>
 			<?php } ?>
 			<h1 id="firstHeading" class="firstHeading" lang="<?php
 				$this->data['pageLanguage'] = $this->getSkin()->getTitle()->getPageViewLanguage()->getHtmlCode();
@@ -307,22 +307,6 @@ class NewiwikiTemplate extends BaseTemplate {
 				<?php } ?>
 				<div class="visualClear"></div>
 				<?php $this->html( 'debughtml' ); ?>
-			</div>
-		</div>
-		<div id="mw-navigation">
-			<h2><?php $this->msg( 'navigation-heading' ) ?></h2>
-			<div id="mw-head">
-				<?php $this->renderNavigation( 'PERSONAL' ); ?>
-				<div id="left-navigation">
-					<?php $this->renderNavigation( array( 'NAMESPACES', 'VARIANTS' ) ); ?>
-				</div>
-				<div id="right-navigation">
-					<?php $this->renderNavigation( array( 'VIEWS', 'ACTIONS', 'SEARCH' ) ); ?>
-				</div>
-			</div>
-			<div id="mw-panel">
-					<div id="p-logo" role="banner"><a style="background-image: url(<?php $this->text( 'logopath' ) ?>);" href="<?php echo htmlspecialchars( $this->data['nav_urls']['mainpage']['href'] ) ?>" <?php echo Xml::expandAttributes( Linker::tooltipAndAccesskeyAttribs( 'p-logo' ) ) ?>></a></div>
-				<?php $this->renderPortals( $this->data['sidebar'] ); ?>
 			</div>
 		</div>
 		<div id="footer" role="contentinfo"<?php $this->html( 'userlangattributes' ) ?>>
@@ -621,19 +605,10 @@ class NewiwikiTemplate extends BaseTemplate {
 <?php
 				break;
 				case 'PERSONAL':
-?>
-<div id="p-personal" role="navigation" class="<?php if ( count( $this->data['personal_urls'] ) == 0 ) { echo ' emptyPortlet'; } ?>" aria-labelledby="p-personal-label">
-	<h3 id="p-personal-label"><?php $this->msg( 'personaltools' ) ?></h3>
-	<ul<?php $this->html( 'userlangattributes' ) ?>>
-<?php
 					$personalTools = $this->getPersonalTools();
 					foreach ( $personalTools as $key => $item ) {
 						echo $this->makeListItem( $key, $item );
 					}
-?>
-	</ul>
-</div>
-<?php
 				break;
 				case 'SEARCH':
 ?>

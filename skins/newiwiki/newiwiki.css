@@ -5,6 +5,14 @@ body {
 	line-height: 1.42857143;
 }
 
+.alert-dismissable .close, .alert-dismissible .close {
+	position: static;
+}
+
+#alertmsg {
+	display: none;
+}
+
 a.external {
     color: #5cb85c;
 }
@@ -116,6 +124,11 @@ div#mw-navigation {
     margin-right: 0;
 }
 
+#pt-userpage {
+	background-image: none;
+	padding-left: 0 !important;
+}
+
 .main_content {
 	margin-top: 60px;
 }
@@ -194,6 +207,23 @@ div#content {
 	box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 
+.siteNotice {
+	padding: 5px;
+	margin: 0;
+	margin-top: 15px;
+}
+
+#localNotice {
+	margin-bottom: 0px;
+}
+
+#localNotice ul {
+	list-style-type: none;
+	margin: 0 auto;
+	text-align: center;
+	color: #333;
+}
+
 #firstHeading {
     margin: 0;
     text-shadow: #aaa 1px 1px 1px;
@@ -206,7 +236,9 @@ div#content {
 
 .top_menu {
     height: 20px;
-	margin-top: -11px;
+	position: absolute;
+	right: 20px;
+	top: 8px;
 }
 
 .top_menu>ul {
@@ -271,6 +303,19 @@ div#content {
 
 	#toc {
 		display: table;
+	}
+
+	.top_menu {
+		top: 2px;
+		right: 10px;
+	}
+
+	.siteNotice {
+		margin-top: 18px;
+	}
+
+	#firstHeader {
+		margin-top: 8px;
 	}
 
     .navbar-iWiki {

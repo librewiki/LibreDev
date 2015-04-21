@@ -210,7 +210,6 @@ class PaperTemplate extends BaseTemplate {
 
 		<div id="mw-js-message" style="display:none;"<?php $this->html( 'userlangattributes' ) ?>></div>
 		<?php if ( $this->data['sitenotice'] ) { ?>
-		<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
 		<?php } ?>
 		<div id="mainBody">
 			<!--
@@ -268,6 +267,7 @@ class PaperTemplate extends BaseTemplate {
 			</div>
 			<div id="container">
 				<div id="mycontent">
+					<div id="siteNotice"><?php $this->html( 'sitenotice' ) ?></div>
 					<div class="wikiTitle" id="wikiTitle">
 						<span class="wikiTitle"><a href="/index.php?title=Special:WhatLinksHere&target=<?php echo $_URITITLE; ?>" rel="nofollow"><span><?php $this->html( 'title' ) ?></span></a></span>
 					</div>
