@@ -144,5 +144,3 @@ jQuery( function ( $ ) {
 			
 } );
 
-
-

@@ -62,7 +62,8 @@ class SkinNewiwiki extends SkinTemplate {
 		);*/
 		$out->addScriptFile('https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js');
 		$out->addScriptFile( '../newiwiki/bootstrap/js/bootstrap.min.js' );
-		$out->addScriptFile( '../newiwiki/tocmove.js?114' );
+		$out->addScriptFile( '../newiwiki/scroll.js?700' );
+		$out->addScriptFile( '../newiwiki/tocmove.js?700' );
         $out->addMeta( 'viewport', 'width=device-width, initial-scale=1, maximum-scale=1' );
 		$out->addModules( array( 'skins.newiwiki.js', 'skins.newiwiki.collapsibleNav' ) );
 	}

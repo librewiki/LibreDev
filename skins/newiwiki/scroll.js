@@ -1,11 +1,14 @@
 jQuery("#toc").ready(function($) {
 	$("a").click(function(){
-		var speed = 500;  // 스크롤 속도
-		var href= jQuery(this).attr("href");
-		//event.preventDefault();
-		//$('html,body').animate({
-		//	scrollTop: 0
-		//}, 500);
-		//return false;
+		if ($(this).attr('href') [0] == '#') {
+			var id = $(this).attr('href') + "";
+			if(id.indexOf(".") != -1) {
+				id = document.getElementById(id.replace("#",""));
+			}
+			$('html,body').animate({
+				scrollTop: ($(id).offset().top - 60 )
+			}, 400);
+			return false;
+		}
 	});
 });
