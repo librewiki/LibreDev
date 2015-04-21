@@ -1,6 +1,6 @@
-//À©µµ¿ì »çÀÌÁî¿¡ µû¶ó º¯°æÀ» ÇÒÁö ¾ÊÇÒ Áö Ã¼Å©ÇÑ´Ù.
+//ìœˆë„ìš° ì‚¬ì´ì¦ˆì— ë”°ë¼ ë³€ê²½ì„ í• ì§€ ì•Ší•  ì§€ ì²´í¬í•œë‹¤.
 var isAllowRequestList = true;
-//¸Å°³ º¯¼ö parent´Â ulÅÂ±×¿©¾ß ÇÕ´Ï´Ù
+//ë§¤ê°œ ë³€ìˆ˜ parentëŠ” ulíƒœê·¸ì—¬ì•¼ í•©ë‹ˆë‹¤
 function ShowAjaxRecentList(parent)
 {
 	function temp()
@@ -121,7 +121,7 @@ jQuery( function ( $ ) {
 		
 		
 		ShowAjaxRecentList($("#recent-list"));
-		//¸¸¾à¿¡ È­¸éÀÇ »çÀÌÁî°¡ ÀÛ¾Æ ÃÖ±Ù º¯°æ±ÛÀÌ ¾Èº¸ÀÏ ½Ã, °»½ÅÀ» ÇÏÁö ¾Ê´Â´Ù.
+		//ë§Œì•½ì— í™”ë©´ì˜ ì‚¬ì´ì¦ˆê°€ ì‘ì•„ ìµœê·¼ ë³€ê²½ê¸€ì´ ì•ˆë³´ì¼ ì‹œ, ê°±ì‹ ì„ í•˜ì§€ ì•ŠëŠ”ë‹¤.
 		$(window).resize(function()
 		{
 			var width = $(window).width();
@@ -141,6 +141,7 @@ jQuery( function ( $ ) {
 			}
 			ShowAjaxRecentList($("#recent-list"));
 			},10 * 1000);
+			
 } );
 
 
