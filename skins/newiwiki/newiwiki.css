@@ -5,6 +5,33 @@ body {
 	line-height: 1.42857143;
 }
 
+a.external {
+    color: #5cb85c;
+}
+
+a.external:visited {
+	color: #5cb85c;
+}
+
+#content .external {
+    background-image: none;
+}
+
+a.external:before {
+    background-color: #5cb85c;
+    content: '外';
+    color: white;
+}
+
+.mw-body a.external {
+	color: #5cb85c;
+}
+
+.wikitable {
+	table-layout: fixed;
+	word-break: break-all;
+}
+
 div#body_wrap {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -121,7 +148,6 @@ div#mw-navigation {
 #right_toc {
 	margin-left: 10px;
 	width: 250px;
-	height: expression( this.scrollHeight > 99 ? "300px" : "auto" );
     max-height: 300px;
     overflow-y: auto;
 	overflow-x: hidden;
@@ -375,4 +401,8 @@ del {
 
 s {
 	color: #999;
+}
+
+#mw-content-text p {
+	padding-left: 5px;
 }
