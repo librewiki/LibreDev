@@ -1,3 +1,5 @@
+//윈도우 사이즈에 따라 변경을 할지 않할 지 체크한다.
+var isAllowRequestList = true;
 //매개 변수 parent는 ul태그여야 합니다
 function ShowAjaxRecentList(parent)
 {
@@ -119,7 +121,26 @@ jQuery( function ( $ ) {
 		
 		
 		ShowAjaxRecentList($("#recent-list"));
-		setInterval(function(){ShowAjaxRecentList($("#recent-list"));},10 * 1000);
+		//만약에 화면의 사이즈가 작아 최근 변경글이 안보일 시, 갱신을 하지 않는다.
+		$(window).resize(function()
+		{
+			var width = $(window).width();
+			if(width <= 750)
+			{
+				isAllowRequestList = false;
+			}
+			else
+			{
+				isAllowRequestList = true;
+			}
+		});
+		setInterval(function(){
+			if(isAllowRequestList == false)
+			{
+				return;
+			}
+			ShowAjaxRecentList($("#recent-list"));
+			},10 * 1000);
 } );
 
 
