@@ -62,7 +62,7 @@ class SkinNewiwiki extends SkinTemplate {
 		);*/
 		$out->addScriptFile('https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js');
 		$out->addScriptFile( '../newiwiki/bootstrap/js/bootstrap.min.js' );
-		$out->addScriptFile( '../newiwiki/scroll.js?703' );
+		$out->addScriptFile( '../newiwiki/scroll.js?708' );
 		$out->addScriptFile( '../newiwiki/tocmove.js?700' );
 		$out->addScriptFile( '../newiwiki/alertmsg.js?700' );
 		$out->addScriptFile( '../newiwiki/jquery.cookie.js?700' );
@@ -355,6 +355,11 @@ class NewiwikiTemplate extends BaseTemplate {
 					</div>
             	</div>
 			</div>
+		</div>
+		<div class="top_scroll">
+			<a href="#" class="top_s_btn">
+				<span class="glyphicon glyphicon-open"></span>
+			</a>
 		</div>
 		<?php $this->printTrail(); ?>
 
