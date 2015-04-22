@@ -38,6 +38,10 @@ img {
 	color: #fff;
 }
 
+.top_scroll a:visited {
+	color: #fff;
+}
+
 .alert-dismissable .close, .alert-dismissible .close {
 	position: static;
 }
