@@ -221,7 +221,7 @@ div#mw-navigation {
 	margin-left: 10px;
 }
 
-#toctitle {
+.toctoggle {
 	display: none;
 }
 
@@ -549,8 +549,8 @@ del {
 	color: #999;
 }
 
-s {
-	color: #999;
+s, strike {
+	color: #999 !important;
 }
 
 #mw-content-text p {

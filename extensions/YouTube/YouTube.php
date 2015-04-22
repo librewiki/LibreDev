@@ -417,8 +417,8 @@ function embedNicovideo( $input, $argv, $parser ) {
 	}
 
 	if ( !empty( $nvid ) ) {
-#		$url = "http://ext.nicovideo.jp/thumb_watch/{$nvid}";
-		$url = "https://ssl-proxy.dcmys.kr/api/proxy/?dcmys_proxy_url=http%3A%2F%2Fext.nicovideo.jp%2Fthumb_watch%2F{$nvid}";
+		$url = "http://ext.nicovideo.jp/thumb_watch/{$nvid}";
+		//$url = "https://ssl-proxy.dcmys.kr/api/proxy/?dcmys_proxy_url=http%3A%2F%2Fext.nicovideo.jp%2Fthumb_watch%2F{$nvid}";
 		return "<script type=\"text/javascript\" src=\"{$url}\"></script>";
 	}
 }
