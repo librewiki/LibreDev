@@ -78,6 +78,10 @@ a.external:before {
 	color: #5cb85c;
 }
 
+.mw-body a.free {
+	word-break: break-all;
+}
+
 .wikitable {
 	table-layout: fixed;
 	word-break: break-all;
@@ -202,6 +206,14 @@ div#mw-navigation {
 	margin-bottom: 5px;
 }
 
+#toc>ul>li a {
+	word-break: break-all;
+}
+
+#toc>ul>li>ul>li a {
+    word-break: break-all;
+}
+
 #right_toc {
 	margin-left: 10px;
 	width: 250px;
@@ -225,18 +237,35 @@ div#mw-navigation {
 	display: none;
 }
 
+#recent-title {
+	border-bottom: 1px solid #ccc;
+    margin-bottom: 3px;
+    padding-bottom: 4px;
+}
+
+#recent-title>h2 {
+	font-size: 1.5em;
+	margin: 0px;
+	padding: 0px;
+	font-weight: bold;
+	text-align: center;
+	border: none;
+}
+
 #recent-list-div {
 	max-width: 230px;
 	margin-left: 10px;
+	border: 1px solid #888;
+	background-color: #fff;
+	border-radius: 5px;
+	padding: 7px;
+	padding-left: 10px;
 }
 
 #recent-list {
 	width: 230px;
-	border: 1px solid #888;
-	background-color: #fff;
-	border-radius: 5px;
-	padding: 10px;
 	margin:0px;
+	margin-top: 3.990px;
 	list-style:none;
 	font-size:95%;
 }
@@ -244,8 +273,16 @@ div#mw-navigation {
 	color:#ba0000;
 }
 
+.recent-more {
+	font-size: 12px;
+	font-weight: bold;
+	line-height: 1em;
+	display: inline-block;
+}
+
 div#content {
 	border: 1px solid #888;
+	border-bottom: none;
 	background-color: white;
 	box-shadow: 0 0 10px rgba(0,0,0,.1);
 }
@@ -307,6 +344,14 @@ div#content {
 
 #toctitle>h2 {
     font-size: 1.6em;
+}
+
+#mw-content-text p {	
+	line-height: 1.7em;
+}
+
+#mw-content-text ul {
+	line-height: 1.7em;
 }
 
 #mw-content-text {
@@ -394,6 +439,27 @@ legend {
 .mw-content-ltr .mw-editsection, .mw-content-rtl .mw-content-ltr .mw-editsection {
     margin-left:8px;
 }
+
+/* 하단 */
+div#footer {
+    margin: 0;
+    padding: 10px;
+    border: 1px solid #888;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+	text-align: center;
+}
+
+div#footer ul li {
+    font-size: 14px;
+}
+
+body.ltr div#footer #footer-places {
+	text-align: center;
+	margin: 0 auto;
+	float: none;
+}
+
 
 @media (max-width: 768px) {
 	.col-xs-3 {
@@ -502,7 +568,9 @@ legend {
 		border: none;
     }
 
-
+	div#footer {
+		border: none;
+	}
 
 }
 
@@ -595,3 +663,4 @@ s, strike {
 .mw-plusminus-neg {
 	margin-left: 5px;
 }
+

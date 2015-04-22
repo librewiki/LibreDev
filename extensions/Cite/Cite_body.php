@@ -1009,11 +1009,11 @@ class Cite {
 	 * arbitrary number of tokens separated by [\t\n ]
 	 */
 	function genBacklinkLabels() {
-		wfProfileIn( __METHOD__ );
+		/*wfProfileIn( __METHOD__ );
 		$text = wfMessage( 'cite_references_link_many_format_backlink_labels' )
 			->inContentLanguage()->plain();
 		$this->mBacklinkLabels = preg_split( '#[\n\t ]#', $text );
-		wfProfileOut( __METHOD__ );
+		wfProfileOut( __METHOD__ );*/
 	}
 
 	/**

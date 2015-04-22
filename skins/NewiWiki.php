@@ -234,7 +234,6 @@ class NewiwikiTemplate extends BaseTemplate {
             $title = $this->getSkin()->getTitle();
             if ( $title->getNamespace() != NS_SPECIAL ) {
                 $companionTitle = $title->isTalkPage() ? $title->getSubjectPage() : $title->getTalkPage();
-            }
             ?>
             <li><?php echo Linker::linkKnown( $title, '<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 편집', null, array( 'action' => 'edit' ) ); ?></li>
             <li><?php echo Linker::linkKnown( $title, '<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span> 새문단', null, array( 'action' => 'edit', 'section' => 'new' ) ); ?></li>
@@ -259,8 +258,12 @@ class NewiwikiTemplate extends BaseTemplate {
                 $watchname = '주시';
                 $emptystar = '-empty';
             }
+			if ( $title->getNamespace() != NS_SPECIAL ) {
             ?>
             <li><?php echo Linker::linkKnown( $title, '<span class="glyphicon glyphicon-star' . $emptystar . '" aria-hidden="true"></span> ' . $watchname, null, array( 'action' => $mode ) ); ?></li>
+			<?php
+			}
+			?>
             <li><?php echo Linker::linkKnown( SpecialPage::getTitleFor( 'Movepage', $title ), '<span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span> 옮기기' ); ?></li>
             <?php if ( $title->quickUserCan( 'protect', $user ) ) { ?>
             <li><?php echo Linker::linkKnown( $title, '<span class="glyphicon glyphicon-lock" aria-hidden="true"></span> 보호', null, array( 'action' => 'protect' ) ); ?></li>
@@ -269,6 +272,7 @@ class NewiwikiTemplate extends BaseTemplate {
             ?>
             <li><?php echo Linker::linkKnown( $title, '<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 삭제', null, array( 'action' => 'delete' ) ); ?></li>
             <?php }
+			}
             ?>
         </ul>
     </div>
@@ -326,7 +330,7 @@ class NewiwikiTemplate extends BaseTemplate {
 			<?php } ?>
 			<?php $footericons = $this->getFooterIcons( "icononly" );
 			if ( count( $footericons ) > 0 ) { ?>
-				<ul id="footer-icons" class="noprint">
+				<ul id="footer-icons">
 <?php			foreach ( $footericons as $blockName => $footerIcons ) { ?>
 					<li id="footer-<?php echo htmlspecialchars( $blockName ); ?>ico">
 <?php				foreach ( $footerIcons as $icon ) { ?>
@@ -349,6 +353,15 @@ class NewiwikiTemplate extends BaseTemplate {
 						<div id="right_toc">
 						</div>
 						<div id = "recent-list-div">
+							<div id="recent-title">
+								<h2>최근 바뀜
+									<span class="recent-more">
+										<span class="mw-editsection-bracket">[</span>
+										<a href="/wiki/특수:최근바뀜" title="최근바뀜문서">more</a>
+										<span class="mw-editsection-bracket">]</span>
+									</span>
+								</h2>
+							</div>
 							<ul id = "recent-list">
 							</ul>
 						</div>
