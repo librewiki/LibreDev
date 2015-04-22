@@ -6,6 +6,11 @@
  */
 
 /* Table of Contents */
+
+pre {
+	white-space:pre-wrap;
+}
+
 #toc,
 .toc,
 .mw-warning {

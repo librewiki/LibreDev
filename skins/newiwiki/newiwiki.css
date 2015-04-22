@@ -5,6 +5,10 @@ body {
 	line-height: 1.42857143;
 }
 
+pre {
+	white-space:pre-wrap;
+}
+
 .alert-dismissable .close, .alert-dismissible .close {
 	position: static;
 }
@@ -15,14 +19,20 @@ body {
 
 a.external {
     color: #5cb85c;
+	padding: 0;
 }
 
 a.external:visited {
-	color: #5cb85c;
+	color: #5cb85c !important;
+}
+
+.mw-body a.external:visited {
+	color: #5cb85c !important;
 }
 
 #content .external {
     background-image: none;
+	padding: 0;
 }
 
 a.external:before {
@@ -232,6 +242,7 @@ div#content {
     border-bottom: 1px dashed #ccc;
     padding-bottom: 5px;
 	padding-top: 6px;
+	margin-top: 10px;
 }
 
 .top_menu {

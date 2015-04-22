@@ -105,16 +105,16 @@ class PaperTemplate extends BaseTemplate {
 	public function execute() {
 		global $wgPaperUseIconWatch;
 
-		$moniIconList = array('편집' => '../skins/moniwiki/imgs/moni2/edit.png',
-													'역사' => '../skins/moniwiki/imgs/moni2/info.png',
-													'보기' => '../skins/moniwiki/imgs/moni2/show.png',
-													'역링크' => '../skins/moniwiki/imgs/moni2/backlinks.png',
-													'임의 문서로' => '../skins/moniwiki/imgs/moni2/random.png',
-													'검색' => '../skins/moniwiki/imgs/moni2/search.png',
-													'차이' => '../skins/moniwiki/imgs/moni2/diff.png',
-													'도움말' => '../skins/moniwiki/imgs/moni2/help.png',
-													'환경설정' => '../skins/moniwiki/imgs/moni2/pref.png',
-													'RSS' => '../skins/moniwiki/imgs/moni2/rss.png');
+		$moniIconList = array('편집' => '/moniwiki/imgs/moni2/edit.png',
+													'역사' => '/moniwiki/imgs/moni2/info.png',
+													'보기' => '/moniwiki/imgs/moni2/show.png',
+													'역링크' => '/moniwiki/imgs/moni2/backlinks.png',
+													'임의 문서로' => '/moniwiki/imgs/moni2/random.png',
+													'검색' => '/moniwiki/imgs/moni2/search.png',
+													'차이' => '/moniwiki/imgs/moni2/diff.png',
+													'도움말' => '/moniwiki/imgs/moni2/help.png',
+													'환경설정' => '/moniwiki/imgs/moni2/pref.png',
+													'RSS' => '/moniwiki/imgs/moni2/rss.png');
 
 		// Build additional attributes for navigation urls
 		$nav = $this->data['content_navigation'];
@@ -254,16 +254,16 @@ class PaperTemplate extends BaseTemplate {
 				</div>
 			</div>
 			<div id="wikiIcon">
-				<a href="/index.php?title=<?php echo $_URITITLE; ?>&action=edit" accesskey="e" title="편집"><span><img src="../skins/moniwiki/imgs/moni2/edit.png" alt="E" class="wikiIcon"></span></a>
-				<a href="/index.php?title=<?php echo $_URITITLE; ?>&diff=" accesskey="c" title="차이 보기"><span><img src="../skins/moniwiki/imgs/moni2/diff.png" alt="D" class="wikiIcon"></span></a>
-				<a href="/wiki/<?php echo $_URITITLE; ?>" title="읽기"><span><img src="../skins/moniwiki/imgs/moni2/show.png" alt="R" class="wikiIcon"></span></a>
-				<a href="/index.php?title=Special:WhatLinksHere&target=<?php echo $_URITITLE; ?>" rel="nofollow" title="가리키는 문서"><span><img src="../skins/moniwiki/imgs/moni2/backlinks.png" alt="," class="wikiIcon"></span></a>
-				<a href="/wiki/Special:Random" rel="nofollow" title="임의 문서로"><span><img src="../skins/moniwiki/imgs/moni2/random.png" alt="A" class="wikiIcon"></span></a>
-				<a href="/wiki/Special:Search" title="검색"><span><img src="../skins/moniwiki/imgs/moni2/search.png" alt="S" class="wikiIcon"></span></a>
-				<a href="/index.php?title=<?php echo $_URITITLE; ?>&action=history" rel="nofollow" title="역사 보기"><span><img src="../skins/moniwiki/imgs/moni2/info.png" alt="I" class="wikiIcon"></span></a>
-				<a href="/wiki/%EB%8F%84%EC%9B%80%EB%A7%90:%EC%9C%84%ED%82%A4_%EB%AC%B8%EB%B2%95" title="도움말"><span><img src="../skins/moniwiki/imgs/moni2/help.png" alt="H" class="wikiIcon"></span></a>
-				<a href="/wiki/Special:Preferences" title="환경설정"><span><img src="../skins/moniwiki/imgs/moni2/pref.png" alt="C" class="wikiIcon"></span></a>
-				<a href="/index.php?title=Special:RecentChanges&feed=atom" rel="nofollow" title="Atom"><span><img src="../skins/moniwiki/imgs/moni2/rss.png" alt="RSS" class="wikiIcon"></span></a>
+				<a href="/index.php?title=<?php echo $_URITITLE; ?>&action=edit" accesskey="e" title="편집"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/edit.png" alt="E" class="wikiIcon"></span></a>
+				<a href="/index.php?title=<?php echo $_URITITLE; ?>&diff=" accesskey="c" title="차이 보기"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/diff.png" alt="D" class="wikiIcon"></span></a>
+				<a href="/wiki/<?php echo $_URITITLE; ?>" title="읽기"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/show.png" alt="R" class="wikiIcon"></span></a>
+				<a href="/index.php?title=Special:WhatLinksHere&target=<?php echo $_URITITLE; ?>" rel="nofollow" title="가리키는 문서"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/backlinks.png" alt="," class="wikiIcon"></span></a>
+				<a href="/wiki/Special:Random" rel="nofollow" title="임의 문서로"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/random.png" alt="A" class="wikiIcon"></span></a>
+				<a href="/wiki/Special:Search" title="검색"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/search.png" alt="S" class="wikiIcon"></span></a>
+				<a href="/index.php?title=<?php echo $_URITITLE; ?>&action=history" rel="nofollow" title="역사 보기"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/info.png" alt="I" class="wikiIcon"></span></a>
+				<a href="/wiki/%EB%8F%84%EC%9B%80%EB%A7%90:%EC%9C%84%ED%82%A4_%EB%AC%B8%EB%B2%95" title="도움말"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/help.png" alt="H" class="wikiIcon"></span></a>
+				<a href="/wiki/Special:Preferences" title="환경설정"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/pref.png" alt="C" class="wikiIcon"></span></a>
+				<a href="/index.php?title=Special:RecentChanges&feed=atom" rel="nofollow" title="Atom"><span><img src="//<?=$_SERVER["HTTP_HOST"];?>/skins/moniwiki/imgs/moni2/rss.png" alt="RSS" class="wikiIcon"></span></a>
 			</div>
 			<div id="container">
 				<div id="mycontent">

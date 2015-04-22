@@ -1,5 +1,5 @@
 jQuery("#toc").ready(function($) {
-	$("a").click(function(){
+	$("#toc ul li > a").click(function(){
 		if ($(this).attr('href') [0] == '#') {
 			var id = $(this).attr('href') + "";
 			if(id.indexOf(".") != -1) {
