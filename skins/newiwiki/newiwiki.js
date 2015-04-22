@@ -119,8 +119,17 @@ jQuery( function ( $ ) {
 		} )
 		.collapsibleTabs();
 		
+		var width = $(window).width();
+		if(width > 750)
+		{
+			isAllowRequestList = true;
+			ShowAjaxRecentList($("#recent-list"));
+		}
+		else
+		{
+			isAllowRequestList = false;
+		}
 		
-		ShowAjaxRecentList($("#recent-list"));
 		//만약에 화면의 사이즈가 작아 최근 변경글이 안보일 시, 갱신을 하지 않는다.
 		$(window).resize(function()
 		{
