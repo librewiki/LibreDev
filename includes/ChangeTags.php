@@ -266,7 +266,7 @@ class ChangeTags {
 				'tagfilter',
 				20,
 				$selected,
-				array( 'class' => 'mw-tagfilter-input', 'id' => 'tagfilter' )
+				array( 'class' => 'mw-tagfilter-input form-control', 'id' => 'tagfilter' )
 			)
 		);
 
@@ -278,7 +278,7 @@ class ChangeTags {
 		$html .= "\n" .
 			Xml::element(
 				'input',
-				array( 'type' => 'submit', 'value' => wfMessage( 'tag-filter-submit' )->text() )
+				array( 'class' => 'btn btn-info', 'type' => 'submit', 'value' => wfMessage( 'tag-filter-submit' )->text() )
 			);
 		$html .= "\n" . Html::hidden( 'title', $title->getPrefixedText() );
 		$html = Xml::tags(

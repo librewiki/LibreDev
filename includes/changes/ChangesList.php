@@ -378,7 +378,7 @@ class ChangesList extends ContextSource {
 			$this->getLanguage()->userTime(
 				$rc->mAttribs['rc_timestamp'],
 				$this->getUser()
-			) . '</span> <span class="mw-changeslist-separator">..</span> ';
+			) . '</span> <span class="mw-changeslist-separator">. .</span> ';
 	}
 
 	/**
