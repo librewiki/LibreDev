@@ -7,13 +7,6 @@ var
 	templates = {}, template;
 	template = {
 		_compilers: {},
-		_getDefaultCompiler: function() {
-			if ( this._compilerDefault && this._compilers[this._compilerDefault] ) {
-				return this._compilers[this._compilerDefault];
-			} else {
-				throw new Error( 'Template default compiler not known.' );
-			}
-		},
 		registerCompiler: function( name, obj, isDefault ) {
 			if ( obj.compile ) {
 				this._compilers[name] = obj;
@@ -25,9 +18,10 @@ var
 			}
 		},
 		/**
-		 * Define template using html. Compiles newly added templates
+		 * Define a template. Compiles newly added templates based on
+		 * the file extension of name and the available compilers.
 		 * @method
-		 * @param {String} name Name of template to add
+		 * @param {String} name Name of template to add including file extension
 		 * @param {String} markup Associated markup (html)
 		 */
 		add: function( name, markup ) {
@@ -42,9 +36,10 @@ var
 					throw new Error( 'Template compiler not found for: ' + ext );
 				}
 			} else {
-				compiler = this._getDefaultCompiler();
+				throw new Error( 'Template has no suffix. Unable to identify compiler.' );
 			}
-			templates[ name ] = compiler.compile( markup, name );
+			templates[ name ] = compiler.compile( markup );
+			compiler.registerPartial( templateParts[0], templates[ name ] );
 		},
 		/**
 		 * Retrieve defined template
@@ -64,12 +59,15 @@ var
 		 * Wraps our template engine of choice
 		 * @method
 		 * @param {string} templateBody Template body.
-		 * @param {string} compiler The name of a registered compiler
+		 * @param {string} compilerName The name of a registered compiler
 		 * @return {mixed} template interface
 		 * accepts template data object as its argument.
 		 */
-		compile: function( templateBody, compiler ) {
-			compiler = compiler ? this._compilers[ compiler ] : this._getDefaultCompiler();
+		compile: function( templateBody, compilerName ) {
+			var compiler = this._compilers[ compilerName ];
+			if ( !compiler ) {
+				throw new Error( 'Unknown compiler ' + compilerName );
+			}
 			return compiler.compile( templateBody );
 		}
 	};

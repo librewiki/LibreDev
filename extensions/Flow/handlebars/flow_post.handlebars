@@ -1,0 +1,24 @@
+{{#with revision}}
+	<div id="flow-post-{{postId}}"
+	     class="flow-post{{#if isModerated}} flow-post-moderated{{/if}}"
+	     data-flow-id="{{postId}}"
+	     {{#if isMaxThreadingDepth}}
+	         data-flow-post-max-depth="1"
+	     {{/if~}}
+	>
+		{{#ifCond @root.rootBlock.submitted.action "===" "edit-post"}}
+			{{#ifCond @root.rootBlock.submitted.postId "===" postId}}
+				{{> flow_edit_post}}
+			{{else}}
+				{{> flow_post_inner}}
+			{{/ifCond}}
+		{{else}}
+			{{> flow_post_inner}}
+		{{/ifCond}}
+
+		{{!-- This stuff is also not needed in preview mode --}}
+		{{#unless isPreview}}
+			{{> flow_post_replies}}
+		{{/unless}}
+	</div>
+{{/with}}

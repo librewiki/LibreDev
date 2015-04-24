@@ -1,0 +1,58 @@
+
+@import 'mediawiki.mixins';
+@import 'flow.colors';
+@import 'flow.helpers';
+
+// @todo: Find better home for this css
+.client-js {
+
+	/*
+	Fallback elements
+
+	Fallback elements are invisible when JavaScript is enabled. They only exist when JavaScript does not run.
+
+	Markup:
+	<div class="flow-ui-fallback-element"></div>
+
+	Styleguide X.
+	*/
+	.flow-ui-fallback-element {
+		visibility: hidden;
+		height: 0;
+	}
+
+	// API interaction indicator
+	.flow-api-inprogress {
+		opacity: 0.5;
+		cursor: wait !important;
+	}
+
+	// A preview version of a given block
+	.flow-preview {
+		cursor: help;
+		margin-top: .5em;
+		color: @colorRegressive;
+	}
+
+	.flow-preview-target-hidden {
+		display: none !important;
+	}
+
+	// With JS, hide .flow-nojs & display .flow-js elements
+	.flow-nojs {
+		display: none;
+	}
+	.flow-js {
+		display: block;
+	}
+}
+
+.client-nojs {
+	// Without JS, hide .flow-js & display .flow-nojs elements
+	.flow-nojs {
+		display: block;
+	}
+	.flow-js {
+		display: none;
+	}
+}

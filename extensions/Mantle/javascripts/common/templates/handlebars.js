@@ -1,16 +1,28 @@
 /**
- * Register the Handlebars compiler as a default
+ * Register the Handlebars compiler with MediaWiki.
  */
 mw.mantle.template.registerCompiler( 'handlebars', {
-	compile: function( src, name ) {
-		// Using this, we override Handlebars' partials by injecting our own partials within it without
-		// having to register them manually
-		name = name.replace( '.handlebars', '' );
-		Handlebars.partials[ name ] = Handlebars.compile( src );
-
+	/**
+	 * Registers a partial internally in the compiler.
+	 *
+	 * @method
+	 * @param {String} name Name of the template
+	 * @param {HandleBars.Template} partial
+	 */
+	registerPartial: function( name, template ) {
+		Handlebars.partials[ name ] = template.render;
+	},
+	/**
+	 * Compiler source code into a template object
+	 *
+	 * @method
+	 * @param {String} src the source of a template
+	 * @return {HandleBars.Template} template object
+	 */
+	compile: function( src ) {
 		return {
 			/** @param {*} data */
-			render: Handlebars.partials[ name ]
+			render: Handlebars.compile( src )
 		};
 	}
 }, true );

@@ -1,0 +1,35 @@
+@import 'mediawiki.mixins';
+@import 'flow.colors';
+@import 'flow.helpers';
+@import 'flow.variables';
+
+// Form button actions should be right-affixed
+.flow-form-actions {
+	position: relative;
+	margin-top: .25em;
+
+	button.mw-ui-button, a.mw-ui-button {
+		float: right;
+		margin-left: .25em;
+	}
+}
+
+
+.flow-anon-warning {
+	position: relative;
+}
+.flow-anon-warning-desktop {
+	display: none;
+	position: absolute;
+	right: -15em;
+	width: 15em;
+}
+
+@media all and (min-width: @wgFlowDeviceWidthTablet) {
+	.flow-anon-warning-mobile {
+		display: none;
+	}
+	.flow-anon-warning-desktop {
+		display: block;
+	}
+}

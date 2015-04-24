@@ -1,0 +1,57 @@
+<div class="flow-topic-summary-container">
+	<div class="flow-topic-summary">
+		<form class="flow-edit-form" data-flow-initial-state="collapsed" method="POST"
+			  action="
+				{{~#if isModerated~}}
+					{{~actions.unlock.url~}}
+				{{~else~}}
+					{{~actions.lock.url~}}
+				{{~/if~}}">
+			{{> flow_errors }}
+			<input type="hidden" name="wpEditToken" value="{{@root.editToken}}" />
+			{{#if summary}}
+				<input type="hidden" name="flow_prev_revision" value="{{summary.revId}}" />
+			{{/if}}
+			<textarea name="flow_summary"
+				  class="mw-ui-input"
+				  type="text"
+				  required
+				  data-flow-preview-node="summary"
+				  data-flow-preview-template="flow_topic_titlebar_summary">
+				{{~#if @root.submitted.content~}}
+					{{~@root.submitted.content~}}
+				{{~else~}}
+					{{~#if summary~}}
+						{{!-- This should always be wikitext, even if its not we should
+							  still escape rather than sending to conditional escape because
+							  tags make no sense inside a <textrea>
+						--}}
+						{{~summary.content~}}
+					{{~/if~}}
+				{{~/if~}}
+			</textarea>
+			<div class="flow-form-actions flow-form-collapsible">
+				<button
+					data-role="submit"
+					class="mw-ui-button mw-ui-constructive"
+					data-flow-interactive-handler="apiRequest"
+					data-flow-api-target="< .flow-topic"
+					data-flow-api-handler="lockTopic">
+						{{#if isModerated}}
+							{{l10n "flow-topic-action-unlock-topic"}}
+						{{else}}
+							{{l10n "flow-topic-action-lock-topic"}}
+						{{/if}}
+				</button>
+				{{> flow_form_buttons }}
+				<small class="flow-terms-of-use plainlinks">
+					{{#if isModerated}}
+						{{l10nParse "flow-terms-of-use-unlock-topic"}}
+					{{else}}
+						{{l10nParse "flow-terms-of-use-lock-topic"}}
+					{{/if}}
+				</small>
+			</div>
+		</form>
+	</div>
+</div>

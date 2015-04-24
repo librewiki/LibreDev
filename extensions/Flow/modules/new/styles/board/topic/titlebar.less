@@ -1,0 +1,79 @@
+@import 'mediawiki.mixins';
+@import 'flow.colors';
+@import 'flow.helpers';
+@import 'flow.variables';
+
+// Show that the topic titlebar is clickable
+.flow-topic-titlebar {
+	position: relative;
+	padding: .5em .75em;
+	background: @colorGrayLightest;
+	border-radius: 3px;
+	outline: none;
+
+	// use child selector to block ie6
+	.flow-menu {
+		top: 1.5em;
+	}
+}
+
+// ...but only when titlebar is active
+.flow-element-collapsible-active {
+	.flow-topic-titlebar {
+		cursor: pointer;
+
+		// Render a shadow
+		&:hover,
+		&:focus {
+			.box-shadow( ~"inset 0 -1px 0px 1px @{colorGrayLighter}, 0 1px 1px @{colorGrayLightest}" );
+		}
+
+		// Fade out the posts to show they will disappear
+		&:hover + .flow-post {
+			opacity: .85;
+		}
+	}
+}
+
+.flow-topic-title {
+	padding: 0;
+	border-bottom: none;
+	// @todo: !important needed to override default Vector styles on div#content h2
+	margin: 0 2.5em .15em 0 !important;
+	font-family: sans-serif !important;
+	font-weight: bold;
+	word-break: break-word;
+	word-wrap: break-word;
+	overflow: visible;
+}
+
+.flow-moderated-topic-title {
+	margin-bottom: .33em;
+	color: @colorTextLight;
+	font-weight: bold;
+}
+
+// Override default Vector heading styles
+div#content h2.flow-topic-title {
+	font-size: 1.75em;
+}
+
+// Notification about subscribing to a topic
+.flow-notification-tooltip-topicsub {
+	width: 15em;
+}
+.flow-notification-tooltip-icon {
+	font-size: 2.5em;
+	text-align: center;
+}
+.flow-notification-tooltip-title {
+	font-size: 1em;
+	font-weight: bold;
+}
+
+// MEDIA QUERIES
+@media all and (min-width: @wgFlowDeviceWidthTablet) {
+	.flow-topic-titlebar {
+		padding: 1em @topicIndent;
+	}
+}

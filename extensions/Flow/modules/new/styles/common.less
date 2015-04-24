@@ -1,0 +1,74 @@
+@import 'mediawiki.mixins';
+@import 'flow.colors';
+@import 'flow.helpers';
+@import 'flow.variables';
+
+.flow-component {
+
+	.flow-list {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	// Box-sizing: border-box is default in the Flow world
+	* {
+		.box-sizing(border-box);
+	}
+}
+
+// Keep a fixed spacing between each individual flow section
+.flow-newtopic-form,
+.flow-topics-bar {
+	padding-top: 1.5em;
+}
+
+// Top board header
+.flow-board-header,
+// The whole board content wrapper
+.flow-board {
+	max-width: 100%;
+	font-size: .875em;
+	line-height: 1.2em;
+	width: 100%;
+	max-width: 915px;
+}
+
+// Individual topic containers
+.flow-topic {
+	padding: 1.5em 0;
+}
+
+// Revision view
+.flow-revision-content {
+	background: none repeat scroll 0 0 #EDEDED;
+	color: #777777 !important;
+	margin-top: 20px;
+	padding: 10px;
+}
+
+// "No more" link
+.flow-no-more {
+	font-size: .875em;
+	color: #777777;
+}
+
+.flow-topic-meta {
+	font-size: .875em;
+}
+
+@media all and (min-width: @wgFlowDeviceWidthTablet) {
+	.flow-topic-meta {
+		font-size: 1em;
+	}
+
+	// Top board header
+	.flow-board-header,
+	// The whole board content wrapper
+	.flow-board {
+		padding-right: 200px;
+		// Set a fixed font-size from which everything else can use a relative amount
+		font-size: 1em;
+		line-height: 1.4em;
+	}
+}

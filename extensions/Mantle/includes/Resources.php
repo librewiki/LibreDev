@@ -67,6 +67,7 @@ $wgResourceModules = array_merge( $wgResourceModules, array(
 	'ext.mantle.oo' => $wgMantleResourceBoilerplate + array(
 		'dependencies' => array(
 			'ext.mantle.modules',
+			'oojs',
 		),
 		'scripts' => array(
 			'javascripts/common/Class.js',

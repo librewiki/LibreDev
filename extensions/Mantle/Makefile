@@ -13,4 +13,4 @@ phpunit:
 	cd ${MW_INSTALL_PATH}/tests/phpunit && php phpunit.php --configuration ${MW_INSTALL_PATH}/extensions/Mantle/tests/suite.xml --group=Mantle
 
 qunit:
-	@scripts/qunit.sh
+	@scripts/qunit.sh Mantle

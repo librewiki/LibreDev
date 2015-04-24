@@ -1,0 +1,195 @@
+@import 'mediawiki.mixins';
+@import 'flow.colors';
+@import 'flow.helpers';
+@import 'flow.variables';
+
+@highlightedIndent: 0.2em;
+
+// Helpers
+.minimalPostHighlight( @negativeMargin ) {
+	margin-left: 0 - @negativeMargin - @topicIndent;
+	padding-left: @topicIndent + @negativeMargin - @highlightedIndent;
+}
+
+// Comments
+form.flow-post {
+	margin-left: @topicIndent - (@textareaPadding * 2);
+}
+
+.flow-post {
+	position: relative;
+	margin: .5em 0 0 .75em;
+	padding: 0 .5em 0 0;
+	color: @colorText;
+	word-wrap: break-word;
+
+	// Nested comments (replies & reply forms)
+	.flow-replies {
+		margin-left: @topicIndent;
+		padding-left: 0.5em;
+		border-left: 1px dotted @colorGrayLighter;
+
+		// Remove tangent preview nesting (no IE6 support, but acceptable degradation)
+		&.flow-preview {
+			margin-left: 0;
+			padding-left: 0;
+			border-left-width: 0;
+
+			.flow-post-main {
+				padding-left: 0;
+				border-left-width: 0;
+			}
+		}
+	}
+
+	.flow-post-main {
+		margin-left: 0.1em;
+	}
+
+	// Highlights a post (no IE6 support, but acceptable degradation)
+	&.flow-post-highlighted {
+		 > .flow-post-main {
+			 @highlightedIndent: @topicIndent - 0.75em;
+			 padding-left: @highlightedIndent;
+			 border-left: solid @highlightedIndent @colorHighlight;
+		}
+	}
+
+	// Highlights all posts newer than a specific post
+	&.flow-post-highlight-newer {
+		.flow-post-content {
+			border-left: solid @highlightedIndent @colorHighlightNewer;
+		}
+	}
+
+	&.flow-post-highlight-newer {
+		.flow-post-content {
+			.minimalPostHighlight( 0.7em );
+		}
+	}
+
+	.flow-post {
+		&.flow-post-highlight-newer {
+			> .flow-post-content {
+				.minimalPostHighlight( 0.3em );
+			}
+		}
+
+		.flow-post {
+			&.flow-post-highlight-newer {
+				> .flow-post-main .flow-post-content {
+					.minimalPostHighlight( 0.4em );
+				}
+			}
+		}
+	}
+
+	// Content of comments
+	.flow-post-content {
+		// protect from content breaking out of its box
+		word-break: break-word;
+		overflow: auto;
+		max-height: 2000px;
+	}
+
+	// Author link in post
+	.flow-author {
+		font-size: .875em;
+		line-height: 1.2em;
+		display: inline-block;
+		color: @colorText;
+		word-wrap: break-word;
+
+		.mw-userlink {
+			font-weight: bold;
+		}
+
+		.mw-usertoollinks {
+			opacity: 0;
+			.transition( opacity .25s linear );
+			&:not(:empty):before {
+				content: ' ( ';
+			}
+			span ~ span:before {
+				content: ' | ';
+			}
+			&:not(:empty):after {
+				content: ' ) ';
+			}
+		}
+		&:hover .mw-usertoollinks {
+			opacity: 1;
+		}
+	}
+
+	.flow-post {
+		padding: 0 .5em;
+		border-left-width: 1px;
+	}
+}
+
+// Comment metadata
+.flow-post-meta {
+	// @todo needs overflow: hidden but crops button border at bottom
+	color: @colorGrayDark;
+	font-size: .875em;
+	text-align: right;
+}
+
+.flow-post-meta-actions {
+	float: left;
+	text-transform: capitalize;
+	a {
+		&::after {
+			content: "\2022";
+			padding: 0 8px;
+			text-decoration: none;
+			display: inline-block;
+			color: @colorGrayDark;
+		}
+		&:last-child {
+			&::after {
+				content: "";
+			}
+		}
+	}
+}
+
+// MEDIA QUERIES
+@media all and (min-width: @wgFlowDeviceWidthTablet) {
+	.flow-post {
+		/* left margin provided by highlighting zone */
+		margin: 1em 0 0 @topicIndent;
+		padding: 0;
+
+		.flow-author {
+			line-height: inherit;
+			font-size: inherit;
+		}
+
+		&.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+			.minimalPostHighlight( 1.3em );
+		}
+		.flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+			.minimalPostHighlight( 1.1em );
+		}
+		.flow-post .flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+			.minimalPostHighlight( 1.1em );
+		}
+	}
+}
+
+// What to do? vector changes this width on us from screen-hd.less with:
+//
+// @media screen and (min-width: 982px)
+// div#content {
+//   margin-left: 11em;
+//   padding: 1.25em 1.5em 1.5em 1.5em;
+// }
+//
+// The standard padding for narrower screens is 1em all around.
+@media all and (min-width: 982px) {
+	.flow-post.flow-post-highlight-newer > .flow-post-main .flow-post-content {
+		.minimalPostHighlight( 1.8em );
+	}
+}

@@ -1,0 +1,44 @@
+{{#if actions.reply}}
+	<form class="flow-post flow-reply-form"
+	      method="POST"
+	      action="{{actions.reply.url}}"
+	      id="flow-reply-{{postId}}"
+	      data-flow-initial-state="collapsed"
+	>
+		<input type="hidden" name="wpEditToken" value="{{@root.rootBlock.editToken}}" />
+		<input type="hidden" name="topic_replyTo" value="{{postId}}" />
+		{{> flow_errors }}
+
+		{{#ifAnonymous}}
+			{{> flow_anon_warning }}
+		{{/ifAnonymous}}
+
+		<textarea id="flow-post-{{postId}}-form-content"
+				name="topic_content"
+				required
+				data-flow-preview-template="flow_post"
+				data-flow-expandable="true"
+				class="mw-ui-input"
+				type="text"
+				placeholder="{{l10n "flow-reply-topic-title-placeholder" (plaintextSnippet content.format content.content)}}"
+				data-role="content">
+			{{~#if @root.submitted~}}
+				{{~#ifCond @root.submitted.postId "===" postId~}}
+					{{~@root.submitted.content~}}
+				{{~/ifCond~}}
+			{{~/if~}}
+		</textarea>
+
+		<div class="flow-form-actions flow-form-collapsible">
+			<button data-role="submit"
+			        class="mw-ui-button mw-ui-constructive"
+			        data-flow-interactive-handler="apiRequest"
+			        data-flow-api-handler="submitReply"
+			        data-flow-api-target="< .flow-topic">
+				{{~actions.reply.title~}}
+			</button>
+			{{> flow_form_buttons }}
+			<small class="flow-terms-of-use plainlinks">{{l10nParse "flow-terms-of-use-reply"}}</small>
+		</div>
+	</form>
+{{/if}}

@@ -1,30 +1,41 @@
 <?php
 /**
  * ResourceLoaderModule subclass which supports templates
+ */
+
+/**
+ * ResourceLoaderModule subclass for mobile
  * Allows basic parsing of messages without arguments
  */
 class ResourceLoaderTemplateModule extends ResourceLoaderFileModule {
+	/** @var array Saves a list of names of modules this module depends on. */
 	protected $dependencies = array();
+	/** @var array Saves a list of messages which have been marked as needing parsing. */
 	protected $parsedMessages = array();
+	/** @var array Saves a list of message keys used by this module. */
 	protected $messages = array();
+	/** @var array Saves a list of the templates named by the modules. */
 	protected $templates = array();
+	/** @var string Base path to prepend to all local paths in $options. Defaults to $IP. */
 	protected $localBasePath;
-	/** String: The local path to where templates are located, see __construct() */
+	/** @var array Saves the target for the module (e.g. desktop and mobile). */
+	protected $targets = array( 'mobile', 'desktop' );
+	/** @var string The local path to where templates are located, see __construct() */
 	protected $localTemplateBasePath = '';
+	/** @var boolean Whether the module has parsed messages or not. */
 	private $hasParsedMessages = false;
+	/** @var boolean Whether the module has templates or not. */
 	private $hasTemplates = false;
 
 	/**
-	 * Array: Cache for mtime of templates
-	 * @par Usage:
-	 * @code
-	 * array( [hash] => [mtime], [hash] => [mtime], ... )
-	 * @endcode
+	 * @var array Cache for mtime of templates
+	 * @example array( [hash] => [mtime], [hash] => [mtime], ... )
 	 */
 	protected $templateModifiedTime = array();
 
 	/**
 	 * Registers core modules and runs registration hooks.
+	 * @param $options List of options; if not given or empty, an empty module will be constructed
 	 */
 	public function __construct( $options ) {
 		foreach ( $options as $member => $option ) {
@@ -60,24 +71,20 @@ class ResourceLoaderTemplateModule extends ResourceLoaderFileModule {
 	/**
 	 * Returns the templates named by the modules
 	 * Each template has a corresponding html file in includes/templates/
-	 *
+	 * @return array List of template names
 	 */
 	function getTemplateNames() {
 		return $this->templates;
 	}
 
 	/**
-	 * Returns name of template. Defaults to .html when no extension present
-	 * @param string $name of template
+	 * Get the path to load templates from.
+	 * @param string $name name of template including file extension
 	 * @return string
 	 */
 	protected function getLocalTemplatePath( $name ) {
-		$ext = pathinfo( $name, PATHINFO_EXTENSION);
-		if ( $ext !== '' ) {
-			return "{$this->localTemplateBasePath}/$name";
-		} else {
-			return "{$this->localTemplateBasePath}/$name.html";
-		}
+		// @FIXME: Deprecate usage of template without file extension.
+		return "{$this->localTemplateBasePath}/$name";
 	}
 
 	/**
@@ -118,7 +125,7 @@ class ResourceLoaderTemplateModule extends ResourceLoaderFileModule {
 
 	/**
 	 * Separates messages which have been marked as needing parsing from standard messages
-	 *
+	 * @param array $messages Array of messages to process
 	 */
 	public function processMessages( $messages ) {
 		foreach( $messages as $key => $value ) {
@@ -155,27 +162,24 @@ class ResourceLoaderTemplateModule extends ResourceLoaderFileModule {
 	}
 
 	/**
+	 * Get the URL or URLs to load for this module's JS in debug mode.
 	 * @param ResourceLoaderContext $context
-	 * @return array
+	 * @return array list of urls
+	 * @see ResourceLoaderModule::getScriptURLsForDebug
 	 */
 	public function getScriptURLsForDebug( ResourceLoaderContext $context ) {
 		if ( $this->hasParsedMessages || $this->hasTemplates ) {
+			$derivative = new DerivativeResourceLoaderContext( $context );
+			$derivative->setDebug( true );
+			$derivative->setModules( array( $this->getName() ) );
+			// @todo FIXME: Make this templates and update
+			// makeModuleResponse so that it only outputs template code.
+			// When this is done you can merge with parent array and
+			// retain file names.
+			$derivative->setOnly( 'scripts' );
+			$rl = $derivative->getResourceLoader();
 			$urls = array(
-				ResourceLoader::makeLoaderURL(
-					array( $this->getName() ),
-					$context->getLanguage(),
-					$context->getSkin(),
-					$context->getUser(),
-					$context->getVersion(),
-					true, // debug
-					// @todo FIXME: Make this templates and update
-					// makeModuleResponse so that it only outputs template code.
-					// When this is done you can merge with parent array and
-					// retain file names.
-					'scripts', // only
-					$context->getRequest()->getBool( 'printable' ),
-					$context->getRequest()->getBool( 'handheld' )
-				),
+				$rl->createLoaderURL( $this->getSource(), $derivative ),
 			);
 		} else {
 			$urls = parent::getScriptURLsForDebug( $context );

@@ -1,0 +1,46 @@
+<div class="flow-post-meta">
+	<span class="flow-post-meta-actions">
+		{{#if actions.reply}}
+			<a href="{{actions.reply.url}}"
+			   title="{{actions.reply.title}}"
+			   class="mw-ui-anchor mw-ui-progressive mw-ui-quiet"
+			   data-flow-interactive-handler="activateReplyPost">
+				{{~actions.reply.title~}}
+			</a>
+		{{/if}}
+		{{#if actions.edit}}
+			<a href="{{actions.edit.url}}"
+			   title="{{actions.edit.title}}"
+			   data-flow-api-handler="activateEditPost"
+			   data-flow-api-target="< .flow-post-main"
+			   data-flow-interactive-handler="apiRequest"
+			   class="mw-ui-anchor mw-ui-progressive mw-ui-quiet">
+				{{l10n "flow-post-action-edit-post"}}
+			</a>
+		{{/if}}
+		{{#if actions.thank}}
+			{{!--
+				progressive enhancement happens in the Thank extension
+				based on the mw-thanks-flow-thank-link class
+			--}}
+			<a class="mw-ui-anchor mw-ui-constructive mw-ui-quiet mw-thanks-flow-thank-link"
+			   href="{{actions.thank.url}}"
+			   title="{{actions.thank.title}}">
+				{{~actions.thank.title~}}
+			</a>
+		{{/if}}
+	</span>
+	{{#if previousRevisionId}}
+		{{#if links.diff-prev}}
+			<a href="{{links.diff-prev.url}}"
+			    class="mw-ui-anchor mw-ui-progressive mw-ui-quiet"
+			    title="{{links.diff-prev.title}}">
+		{{/if}}
+			{{uuidTimestamp revisionId "flow-edited-ago" 1}}
+		{{#if links.diff-prev}}
+			</a>
+		{{/if}}
+		&#8226;
+	{{/if}}
+	{{uuidTimestamp postId "flow-time-ago" 0 timestamp_readable}}
+</div>
