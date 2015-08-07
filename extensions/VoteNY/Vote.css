@@ -1,0 +1,79 @@
+/* CSS for Vote extension */
+.vote-container {
+	text-align: right;
+}
+
+.vote-box {
+	text-align: center;
+	display: inline-block;
+}
+
+#PollVotes {
+	color: #FFF;
+	font-size: 16px;
+	font-weight: bold;
+	display: inline-block;
+	padding: 6px 14px;
+}
+
+.vote-vote-link {
+	background-color: #68BD46;
+}
+
+.vote-unvote-link {
+	background-color: #34BFC5;
+}
+
+.vote-action {
+	text-align: center;
+	width: 43px;
+	display: inline-block;
+}
+
+.vote-action a {
+	font-weight: bold;
+	font-size: 11px;
+	text-decoration: none;
+}
+
+.rating-score {
+	background-color: #68BD46;
+	color: #FFF;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 1px 8px 0px;
+	margin: 1px 7px 0px 0px;
+	text-align: center;
+}
+
+.ratings-top {
+	position: absolute;
+	top: 37px !important;
+	right: 0px !important;
+	width: 100%;
+}
+
+.rating-section {
+	display: inline-block;
+}
+
+.rating-section img {
+	vertical-align: text-bottom;
+}
+
+.rating-voted {
+	color: #666666;
+	line-height: 10px;
+	font-size: 9px;
+	position: absolute;
+	right: 0px;
+}
+
+/* Styling for the (n votes) after rating box/stars */
+.rating-total {
+	color: #666;
+	font-weight: bold;
+	font-size: 11px;
+	margin: 3px 0px 0px 0px;
+}
