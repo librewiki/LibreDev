@@ -82,6 +82,7 @@ class VoteHooks {
 		
 		if (!MWNamespace::isContent( $article->getTitle()->getNamespace() )
 			|| !$wgVoteAutoInsert
+			|| !$article->getTitle()->exists()
 			|| $article->getTitle()->equals( Title::newMainPage() )
 		) {
 			return true;
