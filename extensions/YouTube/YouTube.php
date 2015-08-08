@@ -468,8 +468,13 @@ function embedGoGreenTube( $input, $argv, $parser ) {
 
 function embedYouTube_url2dpid( $url ) {
 	$id = $url;
-
+	
+	if( preg_match( '/^(?:http|https|)(?::\/\/|)(?:videofarm|tvpot)\.daum\.net\/(?:.*?(?:vid=|v\/))?([0-9A-Za-z%$]+)/', $url, $preg ) ) {
 	preg_match( '/(v[0-9A-Za-z]+)/', $id, $preg );
+		$id = $preg[1];
+	}
+
+	preg_match( '/([0-9A-Za-z%$]+)/', $id, $preg );
 	$id = $preg[1];
 
 	return $id;
